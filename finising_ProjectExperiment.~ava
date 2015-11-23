@@ -1,0 +1,779 @@
+import java.util.Scanner;
+
+public class finising_ProjectExperiment {
+
+    //    public static int N;
+	//   String[] namaBarang = new String[100];
+	//   int[] kodeBarang = new int[100];
+	//   String[] distributor = new String[100];
+	//   byte[] jumlahBarang = new byte[100];
+	//   int[] harga = new int[100];
+
+	     public static int N = 6;
+	     private int[] kodeBarang = {12345, 12346, 12347, 12348, 12349, 12310};
+	     private String[] namaBarang = {"sogood","susu","modem","buku","jam","pulpen"};
+	     private String[] distributor = {"PT.Japfa","PT.PT.Indomilk","PT.Nusantara","PT.Yudistira","PT.Clock","PT.Pulpen"};
+	     private int[] harga = {200000,300000,400000,500000,600000,700000};
+
+	       public static void main(String[] args) {
+	           finising_ProjectExperiment objek = new finising_ProjectExperiment();
+	           objek.test();
+	         }
+
+	       public void test() {
+
+	             System.out.println("  ***********************************************");
+	             System.out.println("  +---------------------------------------------+");
+	             System.out.println("  [           WELLCOME IN APLICATION            ]");
+	             System.out.println("  [        PROJECT DATA BARANG KELONTONG        ]");
+	             System.out.println("  +---------------------------------------------+");
+	             System.out.println("  ***********************************************");
+	             System.out.println("");
+	             menuUtama();
+	         }
+
+	       public void exit() {
+		         System.out.println("  ***********************************************");
+		         System.out.println("  +---------------------------------------------+");
+		         System.out.println("  [              EXIT APLICATION                ]");
+		         System.out.println("  [        PROJECT DATA BARANG KELONTONG        ]");
+		         System.out.println("  +---------------------------------------------+");
+		         System.out.println("  ***********************************************");
+		         System.out.println("");
+             }
+
+	 //    Kawasan Menu - Menu Program
+
+	       public void menuUtama() {
+	             Scanner memilihMenu = new Scanner(System.in);
+
+	             int membukaMenu;
+
+
+	             do {
+	                     System.out.println("  +---------------------------------------------+");
+	                     System.out.println("  |          [  Menu Utama Program  ]           |");
+	                     System.out.println("  +---------------------------------------------+");
+	                     System.out.println("  | [ 1.] Memasukan Data Kelontong              |");
+	                     System.out.println("  | [ 2.] Menampilkan Data Kelontong            |");
+	                     System.out.println("  | [ 3.] Menambah Data Kelontong               |");
+	                     System.out.println("  | [ 4.] Mencari Data Kelontong                |");
+	                     System.out.println("  | [ 5.] Mengedit Data Kelontong               |");
+	                     System.out.println("  | [ 6.] Menghapus Data Kelontong              |");
+	                     System.out.println("  | [ 7.] Mengurutkan Data Kelontong            |");
+	                     System.out.println("  | [ 8.] Keluar Program                        |");
+	                     System.out.println("  +---------------------------------------------+");
+	                     System.out.println("");
+	                       System.out.print("  Pilihan Menu [ 1 - 8 ] = open menu ");
+	                       membukaMenu = memilihMenu.nextInt();
+	                     System.out.println("  +---------------------------------------------+");
+	                     System.out.println("  Menu Nomor [ " +membukaMenu + " ] Diproses . . . . ");
+	                     System.out.println("");
+
+	                             if (membukaMenu == 1) {      // memilih menu 1 memasukan data
+	//                               System.out.println("  Masih Proses");
+	                                 getMemasukanData();
+	                           } else if (membukaMenu == 2) { // memilih menu 2 menampilkan data
+	//                               System.out.println("  Masih Proses");
+	                                 subMenuMenampilkan();
+	                           } else if (membukaMenu == 3) { // memilih menu 3 menambahkan data
+	//                               System.out.println("  Masih Proses");
+	                                 subMenuMenambahkan();
+	                           } else if (membukaMenu == 4) { // memilih menu 4 mencari data
+	//                               System.out.println("  Masih Proses");
+	                                 subMenuMencari();
+	                           } else if (membukaMenu == 5) {
+	//                               System.out.println("  Masih Proses");
+	                                 getEditDt();
+	                           } else if (membukaMenu == 6) {
+	//                               System.out.println("  Masih Proses");
+	                                 getHapusDt();
+	                           } else if (membukaMenu == 7) {
+	//                               System.out.println("  Masih Proses");
+	                                 getMenurutkanDt();
+	                           } else {
+    //                               System.out.println("  Masih Proses");
+                                     exit();
+	                           }
+
+
+	             } while (membukaMenu != 8);
+	        } // akhir dari method menuUtama
+
+	       public  void subMenuMenampilkan() {
+	             Scanner memilihSubmenu = new Scanner(System.in);
+	             int membukaSubmenuMenampilkan;
+
+	             do {
+	                     System.out.println("  +------------------------------------------------+");
+	                     System.out.println("  |           [  Menu Menampilkan data  ]          |");
+	                     System.out.println("  +------------------------------------------------+");
+	                     System.out.println("  | [ 1.]  Berdasarkan Keseluruhan                 |");
+	                     System.out.println("  | [ 2.]  Berdasarkan Nama Barang dan Kode Barang |");
+	                     System.out.println("  | [ 3.]  Berdasarkan Nama Barang dan Distributor |");
+	                     System.out.println("  | [ 4.]  Berdasarkan Nama Barang dan Harga       |");
+	                     System.out.println("  | [ 5.]  kembali menu utama                      |");
+	                     System.out.println("  +------------------------------------------------+");
+	                     System.out.println("");
+	                       System.out.print("  pilih [1 - 5] : open Submenu ");
+	                       membukaSubmenuMenampilkan = memilihSubmenu.nextInt();
+                           System.out.println("  ");
+
+	                       if (membukaSubmenuMenampilkan == 1) {  // memilih Submenu 1 berdasarkan keseluruhan
+	 //                        System.out.println("  Masih Proses");
+	                           getMenampilkanData();
+	                       } else if (membukaSubmenuMenampilkan == 2) { // memilih Submenu 2 berdasarkan Nama Barang dan Kode Barang
+	 //                        System.out.println("  Masih Proses");
+	                           getMenampilkanNmBrng_KdBrng();
+	                       } else if (membukaSubmenuMenampilkan == 3) { // memilih Submenu 3 berdasarkan Nama Barang dan Distributor
+	 //                        System.out.println("  Masih Proses");
+	                           getMenampilkanNmBrng_Ditrbutor();
+	                       } else if (membukaSubmenuMenampilkan == 4) { // memilih Submenu 4 berdasarkan Nama Barang dan Harga
+	 //                        System.out.println("  Masih Proses");
+	                           getMenampilkanNmBrng_Hrga();
+	                       } else {
+     //                        System.out.println("  Masih Proses");
+						       System.out.println("  Submenu : "+membukaSubmenuMenampilkan+" tidak ada dalam pilihan");
+						       System.out.println(" ");
+                           }
+
+	             } while (membukaSubmenuMenampilkan != 5);
+	               menuUtama();
+	        } // akhir dari method subMenuMenampilkan
+
+	       public  void subMenuMenambahkan() {
+	             Scanner memilihSubmenu = new Scanner(System.in);
+	             int membukaSubmenuMenambahkan;
+
+	             do {
+	                 System.out.println("  +-------------------------------------+");
+	                 System.out.println("  |     [  Menu Menambahkan data  ]     |");
+	                 System.out.println("  +-------------------------------------+");
+	                 System.out.println("  | [ 1.] Menambah data dari depan      |");
+	                 System.out.println("  | [ 2.] Menambah data dari tengah     |");
+	                 System.out.println("  | [ 3.] Menambah data dari belakang   |");
+	                 System.out.println("  | [ 4.] Kembali kemenu utama          |");
+	                 System.out.println("  +-------------------------------------+");
+	                   System.out.print("  pilih [ 1 - 4 ] : open Submenu ");
+	                   membukaSubmenuMenambahkan = memilihSubmenu.nextInt();
+	                 System.out.println(" ");
+
+	                   if (membukaSubmenuMenambahkan == 1) {  // memilih Submenu 1 memambahkan data dari depan
+   //                    System.out.println("  Masih Proses");
+						 getMenambahkanDt_Depan();
+					 } else if (membukaSubmenuMenambahkan == 2) { // memilih Submenu 2 menambah data dari tengah
+   //                    System.out.println("  Masih Proses");
+						 getMenambahkanDt_Tengah();
+					 } else if (membukaSubmenuMenambahkan == 3) { // memilih Submenu 3 menambah data dari balakang
+   //                    System.out.println("  Masih Proses");
+						 getMenambahkanDt_Belakang();
+					 } else {
+   //                    System.out.println("  Masih Proses");
+						 System.out.println("  Submenu : "+membukaSubmenuMenambahkan+" tidak ada dalam pilihan");
+						 System.out.println(" ");
+                     }
+
+	             } while(membukaSubmenuMenambahkan != 4);
+	               menuUtama();
+	         } // akhir dari method suMenambahkan
+
+	       public  void subMenuMencari() {
+	             Scanner memilihSubmenu = new Scanner(System.in);
+	             int membukaSubmenuMencari;
+
+	             do {
+	                     System.out.println("  +---------------------------------------+");
+	                     System.out.println("  |       [  Mencari data sesuai  ]       |");
+	                     System.out.println("  +---------------------------------------+");
+	                     System.out.println("  | [ 1.] Mencari data dengan Sekuensial  |");
+	                     System.out.println("  | [ 2.] Mencari data dengan Binary      |");
+	                     System.out.println("  | [ 3.] Kembali kemenu utama            |");
+	                     System.out.println("  +---------------------------------------+");
+	                       System.out.print("  pilih [1 - 3] : open Submenu ");
+	                       membukaSubmenuMencari = memilihSubmenu.nextInt();
+                         System.out.println(" ");
+	                        if (membukaSubmenuMencari == 1) {  // memilih Submenu 1 Mencari data dengan Sekuensial
+	//                         System.out.println("  Masih Proses");
+	                           getMencariDt_Sekuensial();
+	                       } else if (membukaSubmenuMencari == 2) { // memilih Submenu 2 Mencari data dengan Binary
+	//                         System.out.println("  Masih Proses");
+	                           getMencariDt_Binary();
+	                       }  else
+	//                         System.out.println("  Masih Proses");
+							   System.out.println("  Submenu : "+membukaSubmenuMencari+" tidak ada dalam pilihan");
+						       System.out.println(" ");
+
+	                } while(membukaSubmenuMencari != 3);
+	                  menuUtama();
+	         }
+
+	 //    Kawasan pemanggilan Mesin Program
+
+	       public void getMemasukanData() {
+	           inputdataKelontong(namaBarang, kodeBarang, distributor, harga);
+            }
+           public void getMenampilkanData() {
+			   menampilkandataKelontong(namaBarang, kodeBarang, distributor, harga);
+			}
+		   public void getMenampilkanNmBrng_KdBrng() {
+		       menampilkanBerdasarkanNamadanKode(namaBarang, kodeBarang, distributor, harga);
+		    }
+		   public void getMenampilkanNmBrng_Ditrbutor() {
+		       menampilkanBerdasarkanNamadanDistributor(namaBarang, kodeBarang, distributor, harga);
+		    }
+		   public void getMenampilkanNmBrng_Hrga() {
+		       menampilkanBerdasarkanNamadanHarga(namaBarang, kodeBarang, distributor, harga);
+            }
+           public void getMenambahkanDt_Depan() {
+		       menambahkandataKelontongDariDepan(namaBarang, kodeBarang, distributor, harga);
+		    }
+		   public void getMenambahkanDt_Tengah() {
+		       menambahkandataKelontongDariTengah(namaBarang, kodeBarang, distributor, harga);
+		    }
+	       public void getMenambahkanDt_Belakang() {
+		       menambahdatakelontongDariBelakang(namaBarang, kodeBarang, distributor, harga);
+            }
+           public void getMencariDt_Sekuensial() {
+		       mencariSekuensialdataKelontong(namaBarang, kodeBarang, distributor, harga);
+            }
+           public void getMencariDt_Binary() {
+		       mencariBinarydataKelontong(namaBarang, kodeBarang, distributor, harga);
+            }
+           public void getEditDt() {
+		       mengeditDatakelontong(namaBarang, kodeBarang, distributor, harga);
+            }
+           public void getHapusDt() {
+			   menghapusDatakelontong(namaBarang, kodeBarang, distributor, harga);
+            }
+           public void getMenurutkanDt() {
+		       mengurutkanDataSecaraBubbleSort(namaBarang, kodeBarang, distributor, harga);
+            }
+
+      //    Kawasan Algoritma Program
+
+	        public static void inputdataKelontong(String[] namaBarang,int[] kodeBarang, String[] distributor, int[] harga) {
+
+	          Scanner masukanNama = new Scanner(System.in);
+	          Scanner masukanNomor = new Scanner(System.in);
+	          Scanner masukanKonfirmasi = new Scanner(System.in);
+
+	  //      deklarasi variabel
+	          String inputLagi;
+	          String simpan;
+	          int i = -1;
+
+	                  System.out.println("  +---------------------------------------------+");
+	                  System.out.println("  |       [  Menu Input Data Kelontong  ]       |");
+	                  System.out.println("  +---------------------------------------------+");
+	          do {
+	              i++;
+
+	                  System.out.print("  | Input Nama Barang  : ");
+	                  namaBarang[i] = masukanNama.next();
+	                  System.out.println("  |---------------------------------------------|");
+
+	                  System.out.print("  | Input Kode Barang  : ");
+	                  kodeBarang[i] = masukanNomor.nextInt();
+	                  System.out.println("  |---------------------------------------------|");
+
+	                  System.out.print("  | Input Distributor  : ");
+	                  distributor[i] = masukanNama.next();
+	                  System.out.println("  |---------------------------------------------|");
+
+	                  System.out.print("  | Input Harga        : ");
+	                  harga[i] = masukanNomor.nextInt();
+	                  System.out.println("  +---------------------------------------------+");
+
+	                  System.out.print("  Masukan Lagi [ iya/tidak ] : "); // konfirmasi mengulang
+	                  inputLagi = masukanKonfirmasi.next();
+	             } while (inputLagi.equals("iya"));
+	                N = i + 1;
+
+	                System.out.print("  Simpan Data Kelontong [ iya/tidak ] : "); // konfirmasi menyimpan
+	                simpan = masukanNama.next();
+	                System.out.println("  +---------------------------------------------+");
+	                    if  (simpan.equalsIgnoreCase("iya")) {
+	                          System.out.println(" ");
+	                          System.out.println("  Proses input data kelontong berhasil disimpan");
+	                          System.out.println("  Dengan jumlah : "+N+" data kelontong");
+	                          System.out.println("");
+	                  } else {
+	                          System.out.println(" ");
+	                          System.out.println("  Data tidak disimpan");
+	                          System.out.println("");
+	                          N = i - 1;
+	                  }
+
+    } // akhir dari method input data
+
+    public static void menampilkandataKelontong(String[] namaBarang,int[] kodeBarang, String[] distributor, int[] harga) {
+
+	        System.out.println("  +-------------------------------------------------------------------------+");
+	        System.out.println("  |             [     Tabel Semua Data Barang Kelontong    ]                |");
+	        System.out.println("  +----+--------------------------------------------------------------------+");
+	        System.out.println("  | No |   \tNama Barang\tKode Barang\tDistributor\tHarga       |");
+	        System.out.println("  +----+--------------------------------------------------------------------+");
+
+	            for (int i = 0 ; i <= N - 1; i++)
+	            {
+	            System.out.println("  | "+i+ "  |\t" + namaBarang[i] + "\t\t" + kodeBarang[i] + "\t\t" +  distributor[i] + "\tRp." + harga[i] );
+	            }
+
+	        System.out.println("  +----+--------------------------------------------------------------------+");
+	        System.out.println("  | Daftar Keseluruhan Data Kelontong = "+ N + " Data Tersimpan \t\t    |");
+	        System.out.println("  +-------------------------------------------------------------------------+");
+	        System.out.println("");
+
+	    } // akhir dari method menampilkan data
+
+	      public static void menampilkanBerdasarkanNamadanKode(String[] namaBarang,int[] kodeBarang, String[] distributor, int[] harga) {
+
+	        System.out.println("  +-----------------------------------------+");
+	        System.out.println("  |            Tabel Menampilkan            |");
+	        System.out.println("  +-----------------------------------------+");
+	        System.out.println("  | Berdasarkan Nama Barang dan Kode Barang |");
+	        System.out.println("  +----+-----------------+------------------+");
+	        System.out.println("  | No | Nama Barang     | Kode Barang\t    |");
+	        System.out.println("  +----+-----------------+------------------+");
+
+	        for (int i = 0 ; i <= N - 1; i++)
+	        {
+	        System.out.println("  | "+i+ "  | " + namaBarang[i] +"\t         | " + kodeBarang[i] +"\t    |");
+	        }
+
+	        System.out.println("  +----+-----------------+------------------+");
+	        System.out.println("  ");
+	    } // akhir method menampilkanBerdasarkanNamadanKode
+
+	      public static void menampilkanBerdasarkanNamadanDistributor(String[] namaBarang,int[] kodeBarang, String[] distributor, int[] harga) {
+
+	        System.out.println("  +-----------------------------------------+");
+	        System.out.println("  |            Tabel Menampilkan            |");
+	        System.out.println("  +-----------------------------------------+");
+	        System.out.println("  | Berdasarkan Nama Barang dan Distributor |");
+	        System.out.println("  +----+-----------------+------------------+");
+	        System.out.println("  | No | Nama Barang     | Distributor\t    |");
+	        System.out.println("  +----+-----------------+------------------+");
+
+	        for (int i = 0 ; i <= N - 1; i++)
+	        {
+	        System.out.println("  | "+i+ "  | " + namaBarang[i] +"\t         | " + distributor[i]);
+	        }
+
+	        System.out.println("  +----+-----------------+------------------+");
+	        System.out.println(" ");
+
+	    } // akhir method menampilkanBerdasarkanNamadanDistributor
+
+	      public static void menampilkanBerdasarkanNamadanHarga(String[] namaBarang,int[] kodeBarang, String[] distributor, int[] harga) {
+
+	        System.out.println("  +-----------------------------------------+");
+			System.out.println("  |            Tabel Menampilkan            |");
+			System.out.println("  +-----------------------------------------+");
+			System.out.println("  |    Berdasarkan Nama Barang dan Harga    |");
+			System.out.println("  +----+-----------------+------------------+");
+			System.out.println("  | No | Nama Barang     | Harga\t    |");
+			System.out.println("  +----+-----------------+------------------+");
+
+			for (int i = 0 ; i <= N - 1; i++)
+			{
+			System.out.println("  | "+i+ "  | " + namaBarang[i] +"\t         | " + harga[i] +"\t    |");
+			}
+
+			System.out.println("  +----+-----------------+------------------+");
+			System.out.println(" ");
+    } // akhir method menampilkanBerdasarkanNamadanDistributor
+
+          public static void menambahkandataKelontongDariDepan(String[] namaBarang,int[] kodeBarang, String[] distributor, int[] harga) {
+		        Scanner masukanNama = new Scanner(System.in);
+		        Scanner masukanNomor = new Scanner(System.in);
+
+	                // deklarasi variabel
+	                int i;
+
+		            System.out.println("  +---------------------------------------------+");
+			        System.out.println("  |      [  Menu Menambahkan Dari Depan  ]      |");
+	                System.out.println("  +---------------------------------------------+");
+
+					// untuk menggeser data
+					for (i = N ; i >= 1 ; i-- ) {
+						kodeBarang[i] = kodeBarang[i - 1];
+						namaBarang[i] = namaBarang[i - 1];
+						distributor[i] = distributor[i - 1];
+						harga[i] = harga[i - 1];
+					}
+
+	                System.out.println("  |---------------------------------------------|");
+		            System.out.print("  | Input Nama Barang  : ");
+	                namaBarang[0] = masukanNama.next();
+	                System.out.println("  |---------------------------------------------|");
+
+	                System.out.print("  | Input Kode Barang  : ");
+	                kodeBarang[0] = masukanNomor.nextInt();
+	                System.out.println("  |---------------------------------------------|");
+
+	                System.out.print("  | Input Distributor  : ");
+	                distributor[0] = masukanNama.next();
+	                System.out.println("  |---------------------------------------------|");
+
+	                System.out.print("  | Input Harga        : ");
+	                harga[0] = masukanNomor.nextInt();
+	                System.out.println("  +---------------------------------------------|");
+
+		       N++;
+
+		       System.out.println("  Proses penambahan data berhasil. . . ");
+		       System.out.println("  ");
+
+    } // akhir method menambahkandataKelontongDariDepan
+
+          public static void menambahkandataKelontongDariTengah(String[] namaBarang,int[] kodeBarang, String[] distributor, int[] harga) {
+	        Scanner masukanNama = new Scanner(System.in);
+	        Scanner masukanNomor = new Scanner(System.in);
+
+	        System.out.println("  +---------------------------------------------+");
+			System.out.println("  |      [  Menu Menambahkan Dari Tengah  ]     |");
+	        System.out.println("  +---------------------------------------------+");
+	          System.out.print("  | Diposisi mana data akan disimpan : ");
+	        int pilihSimpan = masukanNomor.nextInt();
+	        System.out.println("  +---------------------------------------------|");
+	        System.out.println(" ");
+
+	        // bagian menggeser data
+	        for (int i = N ; i > pilihSimpan ; i-- ) {
+	            kodeBarang[i] = kodeBarang[i - 1];
+	            namaBarang[i] = namaBarang[i - 1];
+	            distributor[i] = distributor[i - 1];
+	            harga[i] = harga[i - 1];
+	        }
+
+	        System.out.println("  +---------------------------------------------+");
+	        System.out.print("  | Input Nama Barang  : ");
+	        namaBarang[pilihSimpan] = masukanNama.next();
+	        System.out.println("  |---------------------------------------------|");
+
+	        System.out.print("  | Input Kode Barang  : ");
+	        kodeBarang[pilihSimpan] = masukanNomor.nextInt();
+	        System.out.println("  |---------------------------------------------|");
+
+	        System.out.print("  | Input Distributor  : ");
+	        distributor[pilihSimpan] = masukanNama.next();
+	        System.out.println("  |---------------------------------------------|");
+
+	        System.out.print("  | Input Harga        : ");
+	        harga[pilihSimpan] = masukanNomor.nextInt();
+	        System.out.println("  +---------------------------------------------+");
+
+	        N++;
+	        System.out.println("  Proses penambahan data berhasil. . . ");
+	        System.out.println(" ");
+	    } // akhir method menambahkandataKelontongDariDepan
+
+	      public static void menambahdatakelontongDariBelakang(String[] namaBarang,int[] kodeBarang, String[] distributor, int[] harga) {
+	        Scanner masukanNama = new Scanner(System.in);
+	        Scanner masukanNomor = new Scanner(System.in);
+
+	        System.out.println("  +---------------------------------------------+");
+			System.out.println("  |     [  Menu Menambahkan Dari Belakang  ]    |");
+	        System.out.println("  +---------------------------------------------+");
+
+	        System.out.println("  +---------------------------------------------+");
+	        System.out.print("  | Input Nama Barang  : ");
+	        namaBarang[N] = masukanNama.next();
+	        System.out.println("  |---------------------------------------------|");
+
+	        System.out.print("  | Input Kode Barang  : ");
+	        kodeBarang[N] = masukanNomor.nextInt();
+	        System.out.println("  |---------------------------------------------|");
+
+	        System.out.print("  | Input Distributor  : ");
+	        distributor[N] = masukanNama.next();
+	        System.out.println("  |---------------------------------------------|");
+
+	        System.out.print("  | Input Harga        : ");
+	        harga[N] = masukanNomor.nextInt();
+	        System.out.println("  +---------------------------------------------+");
+
+	        N++;
+	        System.out.println("  Proses penambahan data berhasil. . . ");
+	        System.out.println("  ");
+
+    } // akhir method menambahdatakelontongDariBelakang
+
+
+          public static void mengeditDatakelontong(String[] namaBarang,int[] kodeBarang, String[] distributor, int[] harga) {
+	        Scanner masukanNama = new Scanner(System.in);
+	        Scanner masukanNomor = new Scanner(System.in);
+	        boolean bilaKetemu = false;
+
+	         int i = 0;
+	         int lokasi = 0;
+
+	         System.out.println("  +---------------------------------------------+");
+			 System.out.println("  |      [  Menu Mengedit Data Kelontong  ]     |");
+             System.out.println("  +---------------------------------------------+");
+	           System.out.print("  | Pilih Nama data yang akan di edit : ");
+	           String cari = masukanNama.next();
+	         System.out.println("  +---------------------------------------------|");
+
+	         while ((bilaKetemu == false) && (i < N)) {
+	             if (namaBarang[i].equals(cari)) {
+	                 bilaKetemu = true;
+	                 lokasi = i;
+	             }
+	             i++;
+	         }
+	         if (bilaKetemu == true) {
+	            System.out.println("  +---------------------------------------------+");
+	            System.out.print("  | Input Baru Nama Barang  : ");
+	            namaBarang[lokasi] = masukanNama.next();
+	            System.out.println("  |---------------------------------------------|");
+
+	            System.out.print("  | Input Baru Kode Barang  : ");
+	            kodeBarang[lokasi] = masukanNomor.nextInt();
+	            System.out.println("  |---------------------------------------------|");
+
+	            System.out.print("  | Input Baru Distributor  : ");
+	            distributor[lokasi] = masukanNama.next();
+	            System.out.println("  |---------------------------------------------|");
+
+	            System.out.print("  | Input Baru Harga        : ");
+	            harga[lokasi] = masukanNomor.nextInt();
+	            System.out.println("  +---------------------------------------------+");
+
+	            System.out.println(" ");
+	            System.out.println("  Data Berhasil diubah .....");
+	            System.out.println(" ");
+
+	        } else
+	              System.out.println("  maaf, Nama Barang : [ " +cari+ " ] tidak ada dalam daftar ");
+	              System.out.println(" ");
+	     } // akhir method mengeditDatakelontong
+
+	      public static void menghapusDatakelontong(String[] namaBarang,int[] kodeBarang, String[] distributor, int[] harga) {
+	         Scanner masukanNama = new Scanner(System.in);
+	         boolean bilaKetemu = false;
+	         int i = 0;
+	         int lokasi = 0;
+
+	         System.out.println("  +---------------------------------------------+");
+			 System.out.println("  |     [  Menu Menghapus Data Kelontong  ]     |");
+             System.out.println("  +---------------------------------------------+");
+     	       System.out.print("  | Nama data yang akan di hapus : ");
+	         String cari = masukanNama.next();
+	         System.out.println("  +---------------------------------------------|");
+
+	         while ((bilaKetemu == false) && (i < N))
+	         {
+	             if (namaBarang[i].equals(cari))
+	             {
+	                 bilaKetemu = true;
+	                 lokasi = i;
+	             }
+	             i++;
+	         }
+
+	         if (bilaKetemu == true)
+	         {
+	             // bagian menggeser data
+	             for (i = lokasi; i <= N-2; i++)
+	             {
+	                    kodeBarang[i] = kodeBarang[i + 1];
+	                    namaBarang[i] = namaBarang[i + 1];
+	                    distributor[i] = distributor[i + 1];
+	                    harga[i] = harga[i + 1];
+	             }
+	             N--;
+
+	             System.out.println("  Data Berhasil Dihapus . . . .");
+	             System.out.println("  ");
+	         }
+	         else
+	             System.out.println("  maaf, Nama Barang : [ " +cari+ " ] tidak ada dalam daftar ");
+	             System.out.println("  ");
+       } // akhir method menghapusDatakelontong
+
+		   public static void mencariSekuensialdataKelontong(String[] namaBarang,int[] kodeBarang, String[] distributor, int[] harga) {
+			   Scanner masukanNama = new Scanner(System.in);
+			   boolean bilaKetemu = false;
+			   String lihatData;
+			   int i = 0;
+			   int lokasi = 0;
+
+			   System.out.println("  +-----------------------------------------------------+");
+			   System.out.println("  |     [   Menu Mencari Data Dengan Sekuensial   ]     |");
+			   System.out.println("  +-----------------------------------------------------+");
+			     System.out.print("  | Nama data yang akan di cari  : ");
+			   String cari = masukanNama.next();
+			   System.out.println("  +-----------------------------------------------------+");
+				   while ((bilaKetemu == false) && (i < N)) {
+					   if (namaBarang[i].equals(cari)) {
+						   bilaKetemu = true;
+						   lokasi = i;
+					   }
+					   i++;
+				 }
+				   if (bilaKetemu == true)
+				   {
+					   System.out.println(" ");
+					   System.out.println("  Pencarian data Berhasil ....");
+					   System.out.println("  Nama Barang : [ "+ cari + " ] ditemukan di lokasi = "+ lokasi);
+					   System.out.println("");
+
+					   System.out.print("  Lihat daftar yang tersimpan (iya / tidak) : ");
+					   lihatData = masukanNama.next();
+					   if (lihatData.equals("iya"))
+					   {
+						   System.out.println(" ");
+						   menampilkandatadiPencarian(namaBarang, kodeBarang, distributor, harga);
+						   System.out.println("  Nama Barang : [ "+ cari + " ] terlihat ditemukan di lokasi = "+ lokasi);
+						   System.out.println(" ");
+							   } else {
+								   System.out.println(" ");
+								   System.out.println("  Menu pencarian data Ditutup");
+								   System.out.println(" ");
+								  }
+			   } else {
+					   System.out.println(" ");
+					   System.out.println("  Pencarian data Gagal !!!!");
+					   System.out.println("  maaf, Nama Barang [ " +cari+ " ] tidak ada dalam daftar ");
+					   System.out.println( "  ");
+					   System.out.print("  Lihat daftar yang tersimpan (iya / tidak) : ");
+					   lihatData = masukanNama.next();
+					   if (lihatData.equals("iya"))
+					   {
+							   System.out.println(" ");
+							   menampilkandatadiPencarian(namaBarang, kodeBarang, distributor, harga);
+							   System.out.println("  Nama Barang : [ "+ cari + " ] tidak ditemukan di lokasi ");
+							   System.out.println(" ");
+					   } else {
+							   System.out.println(" ");
+							   System.out.println("  Menu pencarian data Ditutup");
+							   System.out.println(" ");
+					  }
+					 }
+
+		 } // akhir method mencariSekuensialdataKelontong
+
+
+
+
+
+
+		   public static void mencariBinarydataKelontong(String[] namaBarang,int[] kodeBarang, String[] distributor, int[] harga) {
+		           Scanner masukanNama = new Scanner(System.in);
+		           String lihatData;
+
+		           boolean bilaKetemu = false;
+
+		           int ketemu = 0 ;
+		           int kiri = 0;
+		           int kanan = N - 1;
+		           int tengah ;
+
+		           System.out.println("  +-----------------------------------------------------+");
+		  	 System.out.println("  |        [   Menu Mencari Data Dengan Binar   ]       |");
+		  	 System.out.println("  +-----------------------------------------------------+");
+		  	   System.out.print("  | Nama data yang akan di cari  : ");
+		  	  String cari = masukanNama.next();
+		  	 System.out.println("  +-----------------------------------------------------+");
+
+		           if (cari.equals(namaBarang[0])) {
+		               bilaKetemu = true;
+		               ketemu = 0;
+		           } else if (cari.equals(namaBarang[N - 1])) {
+		               bilaKetemu = true;
+		               ketemu = N - 1;
+		           } else {
+
+		               while ((bilaKetemu = false) && (kiri < kanan) ) {
+		                       tengah = (kiri + kanan) / 2;
+
+		                       if (cari.compareTo(namaBarang[tengah]) < kanan )
+		                           kanan = tengah - 1;
+		                       else if (cari.compareTo(namaBarang[tengah]) > kiri )
+		                           kiri = tengah + 1 ;
+		                       else if (cari.compareTo(namaBarang[tengah]) == 0) {
+		                           bilaKetemu = true;
+		                          ketemu = tengah;
+		                       }
+		               }
+		           }
+
+
+		           if (bilaKetemu == true) {
+		               System.out.println(  ketemu + "ada");
+		           } else
+		                System.out.println("  Tidak ada");
+
+     } // akhir dari method mencariBinarydataKelontong
+
+
+
+
+
+
+
+			public static void menampilkandatadiPencarian(String[] namaBarang,int[] kodeBarang, String[] distributor, int[] harga) {
+			   System.out.println("  +-------------------------------------------------------------------------+");
+			   System.out.println("  |             [     Tabel Semua Data Barang Kelontong    ]                |");
+			   System.out.println("  +----+--------------------------------------------------------------------+");
+			   System.out.println("  | No |   \tNama Barang\tKode Barang\tDistributor\tHarga       |");
+			   System.out.println("  +----+--------------------------------------------------------------------+");
+			   for (int i = 0 ; i <= N - 1; i++)
+			   {
+			   System.out.println("  | "+i+ "  |\t" + namaBarang[i] + "\t\t" + kodeBarang[i] + "\t\t" +  distributor[i] + "\tRp." + harga[i] );
+			   }
+			   System.out.println("  +----+--------------------------------------------------------------------+");
+			   System.out.println("  Daftar Keseluruhan Data Kelontong = "+ N + " Data Tersimpan");
+		       System.out.println("");
+
+         } // akhir dari method menampilkan data
+
+			public static void mengurutkanDataSecaraBubbleSort(String[] namaBarang,int[] kodeBarang, String[] distributor, int[] harga) {
+			   Scanner masukanNama = new Scanner(System.in);
+			   String NmBrg , lihatData;
+			   int KdBrg;
+			   String DISTRIBUTOR;
+			   int Hrga;
+
+				for (int j = 0; j <= N - 2; j++) {
+					for(int i = 0; i <= (N-2)-j; i++) {
+						if (namaBarang[i].compareTo(namaBarang[i + 1]) > 0)
+						{
+							NmBrg = namaBarang[i];
+							namaBarang[i] = namaBarang[i + 1];
+							namaBarang[i + 1] = NmBrg;
+
+							KdBrg = kodeBarang[i];
+							kodeBarang[i] = kodeBarang[i + 1];
+							kodeBarang[i + 1] = KdBrg;
+
+							DISTRIBUTOR = distributor[i];
+							distributor[i] = distributor[i + 1];
+							distributor[i + 1] = DISTRIBUTOR;
+
+							Hrga = harga[i];
+							harga[i] = harga[i + 1];
+							harga[i + 1] = Hrga;
+
+					   }
+					}
+				 }
+							System.out.println("  Pengurutan Selesai ........");
+							  System.out.print("  Lihat Hasil (iya / tidak) : ");
+							lihatData = masukanNama.next();
+							if (lihatData.equals("iya"))
+							{
+							 System.out.println(" ");
+							 menampilkandatadiPencarian(namaBarang, kodeBarang, distributor, harga);
+							 System.out.println("  Hasil data sudah terurut ");
+							 System.out.println(" ");
+								 } else {
+									 System.out.println(" ");
+									 System.out.println("  Menu pencarian data Ditutup");
+									 System.out.println(" ");
+								 }
+			} // akhir method mengurutkanDataSecaraBubbleSort
+
+  }
